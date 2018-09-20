@@ -1,0 +1,34 @@
+
+<idea-plugin>
+  <name>Java.net plugin</name>
+  <description>Connects IntelliJ IDEA to java.net</description>
+  <version>1.0</version>
+  <vendor url="http://www.kohsuke.org/">Kohsuke Kawaguchi</vendor>
+  <idea-version since-build="7361"/>
+  <application-components>
+    <component>
+      <implementation-class>com.north.idea.plugins.components.MyApplicationComponents</implementation-class>
+    </component>
+  </application-components>
+  <project-components>
+    <component>
+      <implementation-class>com.north.idea.plugins.components.MyProjectComponents</implementation-class>
+    </component>
+  </project-components>
+  <module-components>
+    <component>
+      <implementation-class>com.north.idea.plugins.components.MyModelComponents</implementation-class>
+    </component>
+  </module-components>
+  <extensions defaultExtensionNs="com.intellij">
+      <projectService  serviceInterface="com.north.idea.plugins.services.MyProjectService"
+                       serviceImplementation="com.north.idea.plugins.services.impl.MyProjectServiceImpl"/>
+    <toolWindow id="problems" anchor="bottom" factoryClass="com.north.idea.plugins.toolwindows.MyToolWindows"/>
+  </extensions>
+  <actions>
+    <action id="com.north.idea.plugins.actions.ShowDetailsAction"
+            class="com.north.idea.plugins.actions.ShowDetailsAction" text="showDetailsAction"
+            description="ShowDetailsAction">
+    </action>
+  </actions>
+</idea-plugin>
