@@ -2,7 +2,12 @@ package com.north.idea.plugins.listeners;
 
 
 import com.intellij.openapi.components.ServiceManager;
+import com.intellij.openapi.module.ModuleServiceManager;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.projectRoots.Sdk;
+import com.intellij.openapi.roots.ProjectRootManager;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.north.idea.plugins.services.MyModuleService;
 import com.north.idea.plugins.services.MyProjectService;
 import com.north.idea.plugins.toolwindows.MyToolWindows;
 
@@ -19,10 +24,12 @@ public class FindAllFilesActionListener implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        MyProjectService projectService = ServiceManager.getService(project, MyProjectService.class);
-       List<String> list = projectService.tt();
-       for(String item : list){
-           myToolWindows.addItem(item);
+        MyProjectService myProjectService = ServiceManager.getService(project, MyProjectService.class);
+       List< VirtualFile> list = myProjectService.queryAllFiles();
+       for(VirtualFile item : list){
+           myToolWindows.addItem(item.getUrl());
        }
+
+        Sdk projectSDK = ProjectRootManager.getInstance(project).getProjectSdk();
     }
 }

@@ -24,6 +24,7 @@
       <projectService  serviceInterface="com.north.idea.plugins.services.MyProjectService"
                        serviceImplementation="com.north.idea.plugins.services.impl.MyProjectServiceImpl"/>
     <toolWindow id="problems" anchor="bottom" factoryClass="com.north.idea.plugins.toolwindows.MyToolWindows"/>
+      <moduleService serviceInterface="com.north.idea.plugins.services.MyModuleService" serviceImplementation="com.north.idea.plugins.services.impl.MyModuleServiceImpl" />
   </extensions>
   <actions>
     <action id="com.north.idea.plugins.actions.ShowDetailsAction"

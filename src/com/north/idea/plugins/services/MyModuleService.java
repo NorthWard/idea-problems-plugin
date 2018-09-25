@@ -5,10 +5,9 @@ import com.intellij.openapi.vfs.VirtualFile;
 
 import java.util.List;
 
-public interface MyProjectService {
-    static MyProjectService getInstance() {
-        return ServiceManager.getService(MyProjectService.class);
+public interface MyModuleService {
+    static MyModuleService getInstance() {
+        return ServiceManager.getService(MyModuleService.class);
     }
-
     List<VirtualFile> queryAllFiles();
 }
